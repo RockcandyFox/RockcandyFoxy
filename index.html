@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冰糖狐狸的歌单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        td {
+            cursor: pointer;
+        }
+        td:focus {
+            background-color: #e0f7fa;
+            outline: none;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>冰糖狐狸的歌单</h1>
+
+    <table id="editableTable">
+        <thead>
+            <tr>
+                <th>歌名 <input type="text" id="searchCol1" oninput="filterTable(0)" placeholder="搜索..."></th>
+                <th>歌手 <input type="text" id="searchCol2" oninput="filterTable(1)" placeholder="搜索..."></th>
+                <th>语言 <input type="text" id="searchCol3" oninput="filterTable(2)" placeholder="搜索..."></th>
+                <th>风格 <input type="text" id="searchCol4" oninput="filterTable(3)" placeholder="搜索..."></th>
+                <th>价格 <input type="text" id="searchCol5" oninput="filterTable(4)" placeholder="搜索..."></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 初始空白行 -->
+            <tr>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="addRow()">添加新行</button>
+    <button onclick="saveData()">保存数据</button>
+    <button onclick="loadData()">加载数据</button>
+    <button onclick="clearData()">清空数据</button>
+</div>
+
+<script>
+    // 添加新行
+    function addRow() {
+        const tbody = document.querySelector('#editableTable tbody');
+        const newRow = document.createElement('tr');
+        for (let i = 0; i < 6; i++) {
+            const newCell = document.createElement('td');
+            newCell.contentEditable = true;
+            newRow.appendChild(newCell);
+        }
+        tbody.appendChild(newRow);
+    }
+
+    // 保存数据到 LocalStorage
+    function saveData() {
+        const table = document.getElementById('editableTable');
+        const data = [];
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            const rowData = [];
+            const cells = row.querySelectorAll('td');
+            cells.forEach(cell => {
+                rowData.push(cell.textContent);
+            });
+            data.push(rowData);
+        });
+        localStorage.setItem('tableData', JSON.stringify(data));
+        alert('数据已保存！');
+    }
+
+    // 从 LocalStorage 加载数据
+    function loadData() {
+        const savedData = localStorage.getItem('tableData');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            const tbody = document.querySelector('#editableTable tbody');
+            tbody.innerHTML = ''; // 清空现有数据
+            data.forEach(rowData => {
+                const newRow = document.createElement('tr');
+                rowData.forEach(cellData => {
+                    const newCell = document.createElement('td');
+                    newCell.contentEditable = true;
+                    newCell.textContent = cellData;
+                    newRow.appendChild(newCell);
+                });
+                tbody.appendChild(newRow);
+            });
+            alert('数据已加载！');
+        } else {
+            alert('没有找到保存的数据！');
+        }
+    }
+
+    // 清空数据和表格
+    function clearData() {
+        localStorage.removeItem('tableData');
+        const tbody = document.querySelector('#editableTable tbody');
+        tbody.innerHTML = '<tr><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>';
+        alert('数据已清空！');
+    }
+
+    // 按列内容过滤表格
+    function filterTable(columnIndex) {
+        const input = document.getElementById(`searchCol${columnIndex + 1}`).value.toLowerCase();
+        const rows = document.querySelectorAll('#editableTable tbody tr');
+        rows.forEach(row => {
+            const cell = row.querySelectorAll('td')[columnIndex];
+            if (cell) {
+                const cellText = cell.textContent.toLowerCase();
+                if (cellText.includes(input)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
