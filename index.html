@@ -419,11 +419,11 @@
     function filterTable(type, columnIndex) {
         let filteredData = allData;
 
-        // 全局搜索（第一列）
+        // 全局搜索（所有列）
         if (type === 'search') {
             const searchText = document.getElementById('searchCol1').value.toLowerCase();
             filteredData = filteredData.filter(row => 
-                row[0].toLowerCase().includes(searchText)
+                row.some(cell => cell.toLowerCase().includes(searchText)) // 检查每一列
             );
         }
 
