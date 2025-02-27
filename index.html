@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>冰糖狐狸的歌单</title>
     <style>
+        /* 定义字体 */
+        @font-face {
+            font-family: 'msyh.ttf'; /* 字体名称 */
+            src: url('fonts/msyh.ttf') format('ttf'), /* 字体文件路径 */
+                 url('fonts/msyh.ttf') format('ttf');
+            font-weight: normal;
+            font-style: normal;
+        }
+
          body {
             background-image: url('background.jpg'); /* 背景图片路径 */
             background-size: cover; /* 图片覆盖整个页面 */
             background-position: center; /* 图片居中显示 */
             background-repeat: no-repeat; /* 防止图片重复 */
             background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            font-family: 幼圆, sans-serif;
+            font-family: 'msyh.ttf', sans-serif; /* 使用自定义字体 */
             color: #596c63; /* 文字颜色 */
         }
         .content {
@@ -40,7 +49,7 @@
             margin: 0 auto;
         }
         td {
-            background-color: rgba(179, 201, 198, 0.8); /* 设置单元格背景透明度 */
+            background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
         }
     </style>
 </head>
@@ -121,11 +130,11 @@
     // 更新筛选框选项
     function updateFilters(data) {
         const filters = [
-            { id: 'filterCol2', columnIndex: 1 }, // 艺术家
-            { id: 'filterCol3', columnIndex: 2 }, // 专辑
-            { id: 'filterCol4', columnIndex: 3 }, // 年份
-            { id: 'filterCol5', columnIndex: 4 }, // 评分
-            { id: 'filterCol6', columnIndex: 5 }, // 备注
+            { id: 'filterCol2', columnIndex: 1 }, // 歌手
+            { id: 'filterCol3', columnIndex: 2 }, // 语言
+            { id: 'filterCol4', columnIndex: 3 }, // 风格
+            { id: 'filterCol5', columnIndex: 4 }, // 价格
+            { id: 'filterCol6', columnIndex: 5 }, // 板块
         ];
 
         filters.forEach(filter => {
