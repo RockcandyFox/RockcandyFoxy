@@ -28,11 +28,17 @@
         }
 
         
+        / /* 电脑端样式 */
+        @media (min-width: auto) {
+            body {
+                background-size: 100% auto; /* 电脑端背景图片宽度固定为 1200px，高度自适应 */
+            }
+        }
+
         /* 移动端样式 */
-        @media  {
-            .container {
-                max-width: 100%; /* 移动端宽度占满屏幕 */
-                padding: 10px; /* 调整内边距 */
+        @media (max-width: auto) {
+            body {
+                background-size: 100% auto; /* 移动端背景图片宽度占满屏幕，高度自适应 */
             }
 
             body {
