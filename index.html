@@ -420,6 +420,7 @@
             });
             tbody.appendChild(newRow);
         });
+        updateStats(data); // 每次渲染表格后更新统计数据
     }
 
     // 更新筛选框选项
@@ -443,7 +444,8 @@
             });
         });
     }
-         // 更新统计数据
+
+    // 更新统计数据
     function updateStats(data) {
         const songCount = data.length; // 统计第一列的数量
         document.getElementById('songCount').textContent = songCount;
@@ -454,7 +456,7 @@
         document.getElementById('categoryStats').textContent = categoryStats;
     }
 
-    / 过滤表格数据
+    // 过滤表格数据
     function filterTable(type, columnIndex) {
         let filteredData = allData;
 
