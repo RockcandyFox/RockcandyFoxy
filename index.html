@@ -86,7 +86,8 @@
 
     <!-- 新增统计行 -->
     <div class="stats-row" id="statsRow">
-        一共 <span id="songCount">0</span> 首歌曲
+        一共 <span id="songCount">0</span> 首歌曲 | 
+        分类: <span id="categoryStats"></span>
     </div>
 
     <table id="readonlyTable">
@@ -442,8 +443,18 @@
             });
         });
     }
+         // 更新统计数据
+    function updateStats(data) {
+        const songCount = data.length; // 统计第一列的数量
+        document.getElementById('songCount').textContent = songCount;
 
-    // 过滤表格数据
+        // 统计第六列的分类
+        const categories = new Set(data.map(row => row[5])); // 获取所有分类并去重
+        const categoryStats = Array.from(categories).join(', '); // 用逗号隔开
+        document.getElementById('categoryStats').textContent = categoryStats;
+    }
+
+    / 过滤表格数据
     function filterTable(type, columnIndex) {
         let filteredData = allData;
 
