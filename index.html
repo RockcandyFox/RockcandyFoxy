@@ -35,12 +35,12 @@
         }
 
         /* 移动端样式 */
-        @media (max-width: 2160px) {
+        @media (max-width: auto) {
             body {
                  background-size: cover; /* 保持图片覆盖整个页面 */
                 background-position: center; /* 图片居中显示 */
                 background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-                background-size: 100% 2880px; /* 移动端背景图片宽度占满屏幕，高度2880像素 */
+                background-size: auto 2880px; /* 移动端背景图片宽度自适应，高度2880像素 */
             }
         }
         .content {
@@ -444,7 +444,18 @@
 
         filters.forEach(filter => {
             const select = document.getElementById(filter.id);
-            const options = new Set(data.map(row => row[filter.columnIndex])); // 去重
+            const options = new Set();
+
+            // 处理第六列的分类拆分
+            if (filter.columnIndex === 5) {
+                data.forEach(row => {
+                    const categories = row[filter.columnIndex].split('；'); // 用分号拆分
+                    categories.forEach(category => options.add(category.trim())); // 去重并去除空格
+                });
+            } else {
+                data.forEach(row => options.add(row[filter.columnIndex])); // 其他列直接去重
+            }
+
             options.forEach(option => {
                 const optionElement = document.createElement('option');
                 optionElement.value = option;
@@ -460,7 +471,11 @@
         document.getElementById('songCount').textContent = songCount;
 
         // 统计第六列的分类
-        const categories = new Set(data.map(row => row[5])); // 获取所有分类并去重
+        const categories = new Set();
+        data.forEach(row => {
+            const rowCategories = row[5].split('；'); // 用分号拆分
+            rowCategories.forEach(category => categories.add(category.trim())); // 去重并去除空格
+        });
         const categoryStats = Array.from(categories).join(', '); // 用逗号隔开
         document.getElementById('categoryStats').textContent = categoryStats;
     }
@@ -481,9 +496,16 @@
         if (type === 'filter') {
             const filterValue = document.getElementById(`filterCol${columnIndex + 1}`).value;
             if (filterValue) {
-                filteredData = filteredData.filter(row => 
-                    row[columnIndex] === filterValue
-                );
+                if (columnIndex === 5) {
+                    // 处理第六列的分类拆分
+                    filteredData = filteredData.filter(row => 
+                        row[columnIndex].split('；').some(category => category.trim() === filterValue)
+                    );
+                } else {
+                    filteredData = filteredData.filter(row => 
+                        row[columnIndex] === filterValue
+                    );
+                }
             }
         }
 
