@@ -446,11 +446,11 @@
             const select = document.getElementById(filter.id);
             const options = new Set();
 
-            // 处理第六列的分类拆分
-            if (filter.columnIndex === 5) {
+            // 处理第二列和第六列的分类拆分
+            if (filter.columnIndex === 1 || filter.columnIndex === 5) {
                 data.forEach(row => {
-                    const categories = row[filter.columnIndex].split('；'); // 用分号拆分
-                    categories.forEach(category => options.add(category.trim())); // 去重并去除空格
+                    const items = row[filter.columnIndex].split(/[，；]/); // 用逗号或分号拆分
+                    items.forEach(item => options.add(item.trim())); // 去重并去除空格
                 });
             } else {
                 data.forEach(row => options.add(row[filter.columnIndex])); // 其他列直接去重
@@ -496,10 +496,10 @@
         if (type === 'filter') {
             const filterValue = document.getElementById(`filterCol${columnIndex + 1}`).value;
             if (filterValue) {
-                if (columnIndex === 5) {
-                    // 处理第六列的分类拆分
+                if (columnIndex === 1 || columnIndex === 5) {
+                    // 处理第二列和第六列的分类拆分
                     filteredData = filteredData.filter(row => 
-                        row[columnIndex].split('；').some(category => category.trim() === filterValue)
+                        row[columnIndex].split(/[，；]/).some(item => item.trim() === filterValue)
                     );
                 } else {
                     filteredData = filteredData.filter(row => 
