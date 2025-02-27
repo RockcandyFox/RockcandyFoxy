@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>冰糖狐狸歌单</title>
+    <title>冰糖狐狸的歌单</title>
     <style>
-        body {
+         body {
+            background-image: url('background.jpg'); /* 背景图片路径 */
+            background-size: cover; /* 图片覆盖整个页面 */
+            background-position: center; /* 图片居中显示 */
+            background-repeat: no-repeat; /* 防止图片重复 */
+            background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
+            margin: 0; /* 去除默认边距 */
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
-            color: #333;
-            background-image: url('background.jpg'); /* 背景图片 */
-            background-size: cover;
-            background-position: center;
+            color: white; /* 文字颜色 */
         }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
+        .content {
+            padding: 20px;
             background-color: rgba(255, 255, 255, 0.8); /* 表格背景透明度 */
         }
         th, td {
@@ -49,7 +44,7 @@
 <body>
 
 <div class="container">
-    <h1>冰糖狐狸歌单</h1>
+    <h1>冰糖狐狸的歌单</h1>
 
     <table id="readonlyTable">
         <thead>
@@ -70,8 +65,13 @@
                         <option value="">全部</option>
                     </select>
                 </th>
-                <th>价格 
+                <th>价格
                     <select id="filterCol5" onchange="filterTable('filter', 4)">
+                        <option value="">全部</option>
+                    </select>
+                </th>
+                <th>板块 
+                    <select id="filterCol6" onchange="filterTable('filter', 5)">
                         <option value="">全部</option>
                     </select>
                 </th>
@@ -88,8 +88,8 @@
 
     // 示例数据（可以替换为从后端加载的数据）
     const sampleData = [
-        ["遇萤", "银临", "中文", "古风", "4000j 5R"],
-        ["第二种选择", "菲菲公主", "中文", "流行", "4000j 5R"],
+       ["遇萤", "银临", "中文", "古风", "4000j 5R"],
+        ["第二种选择", "菲菲公主", "中文", "流行", "4000j 5R","新学"],
         ["循梦", "余又", "中文", "流行", "4000j 5R"],
     ];
 
