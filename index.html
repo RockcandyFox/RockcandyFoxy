@@ -27,13 +27,20 @@
             color: #596c63; /* 文字颜色 */
         }
 
-         /* 移动端样式 */
-        @media (max-width: 768px) {
+         /* 电脑端样式 */
+        @media (min-width: 769px) {
             body {
-                background-size: 100% auto; /* 移动端背景图片宽度占满屏幕，高度自适应 */
+                background-size: cover; /* 电脑端使用 cover，确保图片覆盖整个页面 */
             }
         }
 
+        /* 移动端样式 */
+        @media (max-width: 768px) {
+            body {
+                background-size: contain; /* 移动端使用 contain，确保图片完整显示 */
+                background-position: top center; /* 图片顶部居中显示 */
+            }
+        }
         .content {
             padding: 20px;
             filter: blur(2px); /* 设置模糊效果 */
