@@ -26,6 +26,14 @@
             font-family: 'MyCustomFont', sans-serif; /* 使用自定义字体 */
             color: #596c63; /* 文字颜色 */
         }
+
+        /* 移动设备适配 */
+@media (max-width: 768px) {
+    body {
+        background-size: contain; /* 在移动设备上完整显示图片 */
+        background-position: top center; /* 图片顶部居中显示 */
+    }
+}
         .content {
             padding: 20px;
             filter: blur(2px); /* 设置模糊效果 */
