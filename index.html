@@ -27,13 +27,27 @@
             color: #596c63; /* 文字颜色 */
         }
 
-        /* 移动设备适配 */
-        @media (max-width: 1284px) {
+        /* 电脑端样式 */
+        .container {
+            max-width: 2880px; /* 电脑端最大宽度 */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(179, 201, 198, 0.6); /* 容器背景透明度 */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(89, 108, 99, 0.1);
+
+        /* 移动端样式 */
+        @media (max-width: 2160px) {
+            .container {
+                max-width: 100%; /* 移动端宽度占满屏幕 */
+                padding: 10px; /* 调整内边距 */
+            }
+
             body {
                 background-size: cover; /* 在移动设备上覆盖整个页面 */
                 background-position: center; /* 图片居中显示 */
                 background-repeat: no-repeat; /* 防止图片重复 */
-            background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
+                background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
             }
         }
 
@@ -143,7 +157,7 @@
 ["闻说",	"音频怪物，AKI阿杰",	"中文",	"古风",	"4000j 5R",	"合唱"],
 ["断弦",	"小曲儿",	"中文",	"古风",	"4000j 5R",	"合唱"],
 ["俗世呀",	"AKI阿杰",	"中文",	"古风",	"4000j 5R",	"一点涩"],
-["桃花笑",	"汪睿",	"中文",	"古风",	"4000j 5R",	"甜歌]"],
+["桃花笑",	"汪睿",	"中文",	"古风",	"4000j 5R",	"甜歌"],
 ["红昭愿",	"音阙诗听",	"中文",	"古风",	"4000j 5R",	"节奏感"],
 ["葬花",	"尹昔眠；小爱的妈",	"中文",	"古风",	"5000j 8R",	"抒情"],
 ["半故",	"沉虞",	"中文",	"古风",	"5000j 8R",	"抒情"],
