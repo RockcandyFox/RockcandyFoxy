@@ -92,15 +92,18 @@
 <div class="container">
     <h1>冰糖狐狸的歌单</h1>
 
+    <div class="container">
+    <h1>冰糖狐狸的歌单</h1>
+
     <!-- 新增统计行 -->
     <div class="stats-row" id="statsRow">
         一共 <span id="songCount">0</span> 首歌曲
-        
     </div>
 
-    <table id="readonlyTable">
-        <thead>
-            <tr>
+    <div class="table-container">
+        <table id="readonlyTable">
+            <thead>
+                <tr>
                 <th>歌曲名称 <input type="text" id="searchCol1" oninput="filterTable('search')" placeholder="搜索..."></th>
                 <th>歌手 
                     <select id="filterCol2" onchange="filterTable('filter', 1)">
