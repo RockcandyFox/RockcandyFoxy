@@ -15,11 +15,7 @@
         }
          body {
             font-family: 'MyCustomFont', sans-serif;
-            margin: 0; /* 移除默认的 body 边距 */
-            height: 100vh; /* 使 body 占据整个视口高度 */
-            display: flex;
-            flex-direction: column; /* 垂直布局 */
-        }
+}
 
          body {
             background-image: url('background.jpg'); /* 背景图片路径 */
@@ -39,9 +35,9 @@
         }
 
         /* 移动端样式 */
-        @media (max-width: 768px) {
+        @media (max-width: auto) {
             body {
-                background-size: cover; /* 背景图覆盖整个视口 */
+                background-size: auto 100%; /* 高度占满屏幕，宽度自适应 */
                 background-position: center; /* 图片居中显示 */
                 background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
             }
@@ -54,14 +50,11 @@
         th, td {
             border: 1px solid #ddd;
             padding: 10px;
-            text-align: left;
+            text-align: center;
         }
         th {
             background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
             font-weight: bold;
-            position: sticky; /* 固定表头 */
-            top: 0; /* 固定在顶部 */
-            z-index: 1; /* 确保表头在内容上方 */
         }
         input[type="text"], select {
             width: 100%;
@@ -73,9 +66,6 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            flex: 1; /* 使容器占据剩余空间 */
-            display: flex;
-            flex-direction: column; /* 垂直布局 */
         }
         td {
             background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
@@ -83,10 +73,9 @@
 
         /* 表格滚动容器 */
         .table-container {
-            flex: 1; /* 使表格容器占据剩余空间 */
+            max-height: 60vh; /* 设置表格容器的最大高度 */
             overflow-y: auto; /* 允许垂直滚动 */
             margin-top: 20px;
-            height: calc(100vh - 200px); /* 动态计算高度 */
         }
 
         /* 统计行样式 */
