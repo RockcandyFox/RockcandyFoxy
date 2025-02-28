@@ -104,10 +104,10 @@
 
   <!-- 新增统计行 -->
     <div class="stats-row" id="statsRow">
-        一共 <span id="songCount">0</span> 首歌曲 
+        一共 <span id="songCount">0</span> 首歌曲 |
+        分类: <span id="categoryStats"></span>
     </div>
 
-    <div class="table-container">
     <table id="readonlyTable">
         <thead>
             <tr>
@@ -477,7 +477,16 @@
     // 更新统计数据
     function updateStats(data) {
         const songCount = data.length; // 统计第一列的数量
-        document.getElementById('songCount').textContent = songCount;  
+        document.getElementById('songCount').textContent = songCount;
+
+        // 统计第六列的分类
+        const categories = new Set();
+        data.forEach(row => {
+            const rowCategories = row[5].split('；'); // 用分号拆分
+            rowCategories.forEach(category => categories.add(category.trim())); // 去重并去除空格
+        });
+        const categoryStats = Array.from(categories).join(', '); // 用逗号隔开
+        document.getElementById('categoryStats').textContent = categoryStats;
     }
 
     // 过滤表格数据
