@@ -15,7 +15,7 @@
         }
          body {
             font-family: 'MyCustomFont', sans-serif;
-}
+        }
 
          body {
             background-image: url('background.jpg'); /* 背景图片路径 */
@@ -35,9 +35,9 @@
         }
 
         /* 移动端样式 */
-        @media (max-width: auto) {
+        @media (max-width: 768px) {
             body {
-                background-size: auto 100%; /* 高度占满屏幕，宽度自适应 */
+                background-size: cover; /* 背景图覆盖整个视口 */
                 background-position: center; /* 图片居中显示 */
                 background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
             }
@@ -50,7 +50,7 @@
         th, td {
             border: 1px solid #ddd;
             padding: 10px;
-            text-align: center;
+            text-align: left;
         }
         th {
             background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
@@ -71,7 +71,6 @@
             background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
         }
 
-
         /* 统计行样式 */
         .stats-row {
             background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
@@ -79,10 +78,191 @@
             text-align: center; /* 居中 */
             padding: 10px; /* 内边距 */
         }
+
+        /* 筛选栏容器 */
+        .filter-container {
+            position: sticky; /* 固定筛选栏 */
+            top: 0; /* 固定在顶部 */
+            background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
+            z-index: 2; /* 确保筛选栏在表格上方 */
+            padding: 10px;
+            border-bottom: 1px solid #ddd; /* 添加底部边框 */
+        }
+
+        /* 表头样式 */
+        .table-header {
+            position: sticky;
+            top: 60px; /* 固定在筛选栏下方 */
+            background-color: rgba(179, 201, 198, 0.8);
+            z-index: 1; /* 确保表头在内容上方 */
+        }
+
+        /* 表格滚动容器 */
+        .table-container {
+            max-height: 60vh; /* 设置表格容器的最大高度 */
+            overflow-y: auto; /* 允许垂直滚动 */
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
+<div class="container">
+    <h1>冰糖狐狸的歌单</h1>
+
+    <!-- 新增统计行 -->
+    <div class="stats-row" id="statsRow">
+        一共 <span id="songCount">0</span> 首歌曲
+    </div>
+
+    <!-- 筛选栏容器 -->
+    <div class="filter-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>歌曲名称 <input type="text" id="searchCol1" oninput="filterTable('search')" placeholder="搜索..."></th>
+                    <th>歌手 
+                        <select id="filterCol2" onchange="filterTable('filter', 1)">
+                            <option value="">全部</option>
+                        </select>
+                    </th>
+                    <th>语言 
+                        <select id="filterCol3" onchange="filterTable('filter', 2)">
+                            <option value="">全部</option>
+                        </select>
+                    </th>
+                    <th>风格 
+                        <select id="filterCol4" onchange="filterTable('filter', 3)">
+                            <option value="">全部</option>
+                        </select>
+                    </th>
+                    <th>价格
+                        <select id="filterCol5" onchange="filterTable('filter', 4)">
+                            <option value="">全部</option>
+                        </select>
+                    </th>
+                    <th>分类 
+                        <select id="filterCol6" onchange="filterTable('filter', 5)">
+                            <option value="">全部</option>
+                        </select>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!-- 表格容器 -->
+    <div class="table-container">
+        <table id="readonlyTable">
+            <thead class="table-header">
+                <tr>
+                    <th>歌曲名称</th>
+                    <th>歌手</th>
+                    <th>语言</th>
+                    <th>风格</th>
+                    <th>价格</th>
+                    <th>分类</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 动态生成行 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    let allData = []; // 存储所有数据
+
+    // 示例数据（可以替换为从后端加载的数据）
+    const sampleData = [ 
+        ["故梦", "橙翼", "中文", "古风", "4000j 5R", "抒情"],
+        ["息兮", "慕寒", "中文", "古风", "4000j 5R", "抒情"],
+        ["遇萤", "CRITTY", "中文", "古风", "4000j 5R", "抒情"],
+        ["天下", "张杰", "中文", "古风", "4000j 5R", "抒情"],
+    ];
+
+    // 初始化数据
+    function initData() {
+        allData = sampleData; // 使用示例数据
+        renderTable(allData);
+        updateFilters(allData); // 更新筛选框选项
+    }
+
+    // 渲染表格
+    function renderTable(data) {
+        const tbody = document.querySelector('#readonlyTable tbody');
+        tbody.innerHTML = ''; // 清空现有数据
+        data.forEach(rowData => {
+            const newRow = document.createElement('tr');
+            rowData.forEach(cellData => {
+                const newCell = document.createElement('td');
+                newCell.textContent = cellData; // 只读，不可编辑
+                newRow.appendChild(newCell);
+            });
+            tbody.appendChild(newRow);
+        });
+        updateStats(data); // 每次渲染表格后更新统计数据
+    }
+
+    // 更新筛选框选项
+    function updateFilters(data) {
+        const filters = [
+            { id: 'filterCol2', columnIndex: 1 }, // 歌手
+            { id: 'filterCol3', columnIndex: 2 }, // 语言
+            { id: 'filterCol4', columnIndex: 3 }, // 风格
+            { id: 'filterCol5', columnIndex: 4 }, // 价格
+            { id: 'filterCol6', columnIndex: 5 }, // 分类
+        ];
+
+        filters.forEach(filter => {
+            const select = document.getElementById(filter.id);
+            const options = new Set(data.map(row => row[filter.columnIndex])); // 去重
+            options.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option;
+                optionElement.textContent = option;
+                select.appendChild(optionElement);
+            });
+        });
+    }
+
+    // 更新统计数据
+    function updateStats(data) {
+        const songCount = data.length; // 统计歌曲数量
+        document.getElementById('songCount').textContent = songCount;
+    }
+
+    // 过滤表格数据
+    function filterTable(type, columnIndex) {
+        let filteredData = allData;
+
+        // 全局搜索（所有列）
+        if (type === 'search') {
+            const searchText = document.getElementById('searchCol1').value.toLowerCase();
+            filteredData = filteredData.filter(row => 
+                row.some(cell => cell.toLowerCase().includes(searchText)) // 检查每一列
+            );
+        }
+
+        // 按列筛选
+        if (type === 'filter') {
+            const filterValue = document.getElementById(`filterCol${columnIndex + 1}`).value;
+            if (filterValue) {
+                filteredData = filteredData.filter(row => 
+                    row[columnIndex] === filterValue
+                );
+            }
+        }
+
+        renderTable(filteredData);
+    }
+
+    // 初始化数据
+    initData();
+</script>
+
+</body>
 <div class="container">
     <h1>冰糖狐狸的歌单</h1>
 
