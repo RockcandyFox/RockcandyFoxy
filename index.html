@@ -41,12 +41,6 @@
                 background-position: center; /* 图片居中显示 */
                 background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
             }
-
-            .table-container {
-                max-height: 60vh; /* 设置表格容器的最大高度 */
-                overflow-y: auto; /* 允许垂直滚动 */
-                margin-top: 20px;
-            }
         }
         .content {
             padding: 20px;
@@ -100,13 +94,19 @@
             position: sticky;
             top: 60px; /* 固定在筛选栏下方 */
             background-color: rgba(179, 201, 198, 0.8);
-            z-index: 1; /* 确保表头在内容
-运行 HTML
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            z-index: 1; /* 确保表头在内容上方 */
+        }
+
+        /* 表格滚动容器 */
+        .table-container {
+            max-height: 60vh; /* 设置表格容器的最大高度 */
+            overflow-y: auto; /* 允许垂直滚动 */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    
     <title>冰糖狐狸的歌单</title>
     <style>
         /* 定义字体 */
