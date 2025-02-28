@@ -7,103 +7,51 @@
     <style>
         /* 定义字体 */
         @font-face {
-            font-family: 'MyCustomFont'; /* 字体名称 */
-            src: url('MyCustomFont.ttf') format('truetype'), /* 字体文件路径 */
-                  url('MyCustomFont.ttf') format('truetype');
+            font-family: 'MyCustomFont';
+            src: url('MyCustomFont.ttf') format('truetype'),
+                 url('MyCustomFont.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
+
         html, body {
             height: 100%; /* 确保 html 和 body 占满整个视口 */
             margin: 0; /* 移除默认边距 */
         }
-         body {
+
+        * {
+            box-sizing: border-box; /* 确保宽度包含 padding 和 border */
+        }
+
+        body {
             font-family: 'MyCustomFont', sans-serif;
             margin: 0; /* 移除默认的 body 边距 */
             height: 100vh; /* 使 body 占据整个视口高度 */
             display: flex;
             flex-direction: column; /* 垂直布局 */
-        }
-
-         body {
             background-image: url('background.jpg'); /* 背景图片路径 */
             background-size: cover; /* 图片覆盖整个页面 */
             background-position: center; /* 图片居中显示 */
             background-repeat: no-repeat; /* 防止图片重复 */
             background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            font-family: 'MyCustomFont', sans-serif; /* 使用自定义字体 */
             color: #596c63; /* 文字颜色 */
         }
 
-         /* 电脑端样式 */
-        @media (min-width: 769px) {
-            body {
-                background-size: cover; /* 电脑端使用 cover，确保图片覆盖整个页面 */
-            }
-            .table-container {
-                height: calc(100vh - 200px); /* 动态计算高度 */
-                width: 100%; /* 宽度占满整个页面 */
-            }
-            table {
-                width: 100%; /* 表格宽度占满容器 */
-            }
-        }
-
-        /* 移动端样式 */
-        @media (max-width: 768px) {
-            body {
-                background-size: cover; /* 背景图覆盖整个视口 */
-                background-position: center; /* 图片居中显示 */
-                background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            }
-            .table-container {
-                height: calc(100vh - 200px); /* 动态计算高度 */
-            }
-        }
-        .content {
-            padding: 20px;
-            filter: blur(2px); /* 设置模糊效果 */
-            background-color: rgba(179, 201, 198, 0.8); /* 表格背景透明度 */
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
-            font-weight: bold;
-            position: sticky; /* 固定表头 */
-            top: 0; /* 固定在顶部 */
-            z-index: 1; /* 确保表头在内容上方 */
-        }
-        input[type="text"], select {
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
         .container {
-            max-width: 1920px; /* 根据分辨率调整最大宽度 */
+            max-width: 100%; /* 让容器占满整个页面宽度 */
             margin: 0 auto;
             flex: 1; /* 使容器占据剩余空间 */
             display: flex;
             flex-direction: column; /* 垂直布局 */
             min-height: 100vh; /* 确保容器至少占满整个视口高度 */
-        }
-        td {
-            background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
+            padding: 0; /* 移除内边距 */
         }
 
-        /* 表格滚动容器 */
-        .table-container {
-            overflow-y: auto; /* 允许垂直滚动 */
-            margin-top: 0; /* 移除与统计栏的间隔 */
-            flex-grow: 1; /* 占满剩余空间 */
+        h1 {
+            text-align: center; /* 标题居中 */
+            margin: 20px 0; /* 调整标题的上下边距 */
         }
 
-        /* 统计行样式 */
         .stats-row {
             background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
             font-weight: bold; /* 加粗 */
@@ -112,7 +60,6 @@
             margin-bottom: 0; /* 移除统计栏和筛选栏之间的间隔 */
         }
 
-        /* 筛选栏容器 */
         .filter-container {
             position: sticky; /* 固定筛选栏 */
             top: 0; /* 固定在顶部 */
@@ -123,18 +70,42 @@
             margin-top: 0; /* 移除统计栏和筛选栏之间的间隔 */
         }
 
-        /* 表头样式 */
-        .table-header {
-            position: sticky;
-            top: 60px; /* 固定在筛选栏下方 */
-            background-color: rgba(179, 201, 198, 0.8);
+        .table-container {
+            overflow-y: auto; /* 允许垂直滚动 */
+            margin-top: 0; /* 移除与统计栏的间隔 */
+            flex-grow: 1; /* 占满剩余空间 */
+            width: 100%; /* 宽度占满整个页面 */
+        }
+
+        table {
+            width: 100%; /* 表格宽度占满容器 */
+            border-collapse: collapse; /* 合并表格边框 */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
+            font-weight: bold;
+            position: sticky; /* 固定表头 */
+            top: 0; /* 固定在顶部 */
             z-index: 1; /* 确保表头在内容上方 */
         }
 
-        /* 标题居中 */
-        h1 {
-            text-align: center; /* 标题居中 */
-            margin: 20px 0; /* 调整标题的上下边距 */
+        td {
+            background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
     </style>
 </head>
