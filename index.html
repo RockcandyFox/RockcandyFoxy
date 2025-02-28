@@ -15,7 +15,7 @@
         }
          body {
             font-family: 'MyCustomFont', sans-serif;
-        }
+}
 
          body {
             background-image: url('background.jpg'); /* 背景图片路径 */
@@ -35,17 +35,11 @@
         }
 
         /* 移动端样式 */
-        @media (max-width: 768px) {
+        @media (max-width: auto) {
             body {
-                background-size: cover; /* 背景图覆盖整个视口 */
+                background-size: auto 100%; /* 高度占满屏幕，宽度自适应 */
                 background-position: center; /* 图片居中显示 */
                 background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            }
-
-            .table-container {
-                max-height: 60vh; /* 设置表格容器的最大高度 */
-                overflow-y: auto; /* 允许垂直滚动 */
-                margin-top: 20px;
             }
         }
         .content {
@@ -56,7 +50,7 @@
         th, td {
             border: 1px solid #ddd;
             padding: 10px;
-            text-align: left;
+            text-align: center;
         }
         th {
             background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
@@ -91,24 +85,6 @@
             text-align: center; /* 居中 */
             padding: 10px; /* 内边距 */
         }
-
-        /* 筛选栏容器 */
-        .filter-container {
-            position: sticky; /* 固定筛选栏 */
-            top: 0; /* 固定在顶部 */
-            background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
-            z-index: 2; /* 确保筛选栏在表格上方 */
-            padding: 10px;
-            border-bottom: 1px solid #ddd; /* 添加底部边框 */
-        }
-
-        /* 表头样式 */
-        .table-header {
-            position: sticky;
-            top: 60px; /* 固定在筛选栏下方 */
-            background-color: rgba(179, 201, 198, 0.8);
-            z-index: 1; /* 确保表头在内容上方 */
-        }
     </style>
 </head>
 <body>
@@ -116,15 +92,15 @@
 <div class="container">
     <h1>冰糖狐狸的歌单</h1>
 
-     <!-- 新增统计行 -->
+    <!-- 新增统计行 -->
     <div class="stats-row" id="statsRow">
         一共 <span id="songCount">0</span> 首歌曲
+        
     </div>
 
-    <div class="table-container">
-        <table id="readonlyTable">
-            <thead>
-                <tr>
+    <table id="readonlyTable">
+        <thead>
+            <tr>
                 <th>歌曲名称 <input type="text" id="searchCol1" oninput="filterTable('search')" placeholder="搜索..."></th>
                 <th>歌手 
                     <select id="filterCol2" onchange="filterTable('filter', 1)">
@@ -492,7 +468,8 @@
     function updateStats(data) {
         const songCount = data.length; // 统计第一列的数量
         document.getElementById('songCount').textContent = songCount;
-    }
+
+        
 
     // 过滤表格数据
     function filterTable(type, columnIndex) {
@@ -531,4 +508,3 @@
 </script>
 
 </body>
-</html>
