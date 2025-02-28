@@ -15,7 +15,7 @@
         }
          body {
             font-family: 'MyCustomFont', sans-serif;
-}
+        }
 
          body {
             background-image: url('background.jpg'); /* 背景图片路径 */
@@ -35,11 +35,17 @@
         }
 
         /* 移动端样式 */
-        @media (max-width: auto) {
+        @media (max-width: 768px) {
             body {
-                background-size: auto 100%; /* 高度占满屏幕，宽度自适应 */
+                background-size: cover; /* 背景图覆盖整个视口 */
                 background-position: center; /* 图片居中显示 */
                 background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
+            }
+
+            .table-container {
+                max-height: 60vh; /* 设置表格容器的最大高度 */
+                overflow-y: auto; /* 允许垂直滚动 */
+                margin-top: 20px;
             }
         }
         .content {
@@ -50,7 +56,7 @@
         th, td {
             border: 1px solid #ddd;
             padding: 10px;
-            text-align: center;
+            text-align: left;
         }
         th {
             background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
@@ -71,13 +77,30 @@
             background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
         }
 
-
         /* 统计行样式 */
         .stats-row {
             background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
             font-weight: bold; /* 加粗 */
             text-align: center; /* 居中 */
             padding: 10px; /* 内边距 */
+        }
+
+        /* 筛选栏容器 */
+        .filter-container {
+            position: sticky; /* 固定筛选栏 */
+            top: 0; /* 固定在顶部 */
+            background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
+            z-index: 2; /* 确保筛选栏在表格上方 */
+            padding: 10px;
+            border-bottom: 1px solid #ddd; /* 添加底部边框 */
+        }
+
+        /* 表头样式 */
+        .table-header {
+            position: sticky;
+            top: 60px; /* 固定在筛选栏下方 */
+            background-color: rgba(179, 201, 198, 0.8);
+            z-index: 1; /* 确保表头在内容上方 */
         }
     </style>
 </head>
