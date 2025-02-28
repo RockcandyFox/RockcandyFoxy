@@ -38,7 +38,7 @@
             }
             .table-container {
                 height: calc(100vh - 200px); /* 动态计算高度 */
-                width: 100%; /* 宽度占满整个页面 */
+                width: 200%; /* 宽度占满整个页面 */
             }
             table {
                 width: 100%; /* 表格宽度占满容器 */
@@ -101,8 +101,9 @@
         .stats-row {
             background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
             font-weight: bold; /* 加粗 */
-            text-align: center; /* 居中 */
+            text-align: left; /* 靠左 */
             padding: 10px; /* 内边距 */
+            margin-bottom: 0; /* 移除统计栏和筛选栏之间的间隔 */
         }
 
         /* 筛选栏容器 */
@@ -113,6 +114,7 @@
             z-index: 2; /* 确保筛选栏在表格上方 */
             padding: 10px;
             border-bottom: 1px solid #ddd; /* 添加底部边框 */
+            margin-top: 0; /* 移除统计栏和筛选栏之间的间隔 */
         }
 
         /* 表头样式 */
@@ -121,6 +123,12 @@
             top: 60px; /* 固定在筛选栏下方 */
             background-color: rgba(179, 201, 198, 0.8);
             z-index: 1; /* 确保表头在内容上方 */
+        }
+
+        /* 标题居中 */
+        h1 {
+            text-align: center; /* 标题居中 */
+            margin: 20px 0; /* 调整标题的上下边距 */
         }
     </style>
 </head>
