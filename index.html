@@ -15,7 +15,7 @@
         }
          body {
             font-family: 'MyCustomFont', sans-serif;
-        }
+}
 
          body {
             background-image: url('background.jpg'); /* 背景图片路径 */
@@ -35,9 +35,9 @@
         }
 
         /* 移动端样式 */
-        @media (max-width: 768px) {
+        @media (max-width: auto) {
             body {
-                background-size: cover; /* 背景图覆盖整个视口 */
+                background-size: auto 100%; /* 高度占满屏幕，宽度自适应 */
                 background-position: center; /* 图片居中显示 */
                 background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
             }
@@ -50,7 +50,7 @@
         th, td {
             border: 1px solid #ddd;
             padding: 10px;
-            text-align: left;
+            text-align: center;
         }
         th {
             background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
@@ -71,227 +71,6 @@
             background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
         }
 
-        /* 统计行样式 */
-        .stats-row {
-            background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
-            font-weight: bold; /* 加粗 */
-            text-align: center; /* 居中 */
-            padding: 10px; /* 内边距 */
-        }
-
-        /* 筛选栏容器 */
-        .filter-container {
-            position: sticky; /* 固定筛选栏 */
-            top: 0; /* 固定在顶部 */
-            background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
-            z-index: 2; /* 确保筛选栏在表格上方 */
-            padding: 10px;
-            border-bottom: 1px solid #ddd; /* 添加底部边框 */
-        }
-
-        /* 表头样式 */
-        .table-header {
-            position: sticky;
-            top: 60px; /* 固定在筛选栏下方 */
-            background-color: rgba(179, 201, 198, 0.8);
-            z-index: 1; /* 确保表头在内容上方 */
-        }
-
-        /* 表格滚动容器 */
-        .table-container {
-            max-height: 60vh; /* 设置表格容器的最大高度 */
-            overflow-y: auto; /* 允许垂直滚动 */
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    
-    <title>冰糖狐狸的歌单</title>
-    <style>
-        /* 定义字体 */
-        @font-face {
-            font-family: 'MyCustomFont'; /* 字体名称 */
-            src: url('MyCustomFont.ttf') format('truetype'), /* 字体文件路径 */
-                  url('MyCustomFont.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-         body {
-            font-family: 'MyCustomFont', sans-serif;
-        }
-
-         body {
-            background-image: url('background.jpg'); /* 背景图片路径 */
-            background-size: cover; /* 图片覆盖整个页面 */
-            background-position: center; /* 图片居中显示 */
-            background-repeat: no-repeat; /* 防止图片重复 */
-            background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            font-family: 'MyCustomFont', sans-serif; /* 使用自定义字体 */
-            color: #596c63; /* 文字颜色 */
-        }
-
-         /* 电脑端样式 */
-        @media (min-width: 769px) {
-            body {
-                background-size: cover; /* 电脑端使用 cover，确保图片覆盖整个页面 */
-            }
-        }
-
-        /* 移动端样式 */
-        @media (max-width: 768px) {
-            body {
-                background-size: cover; /* 背景图覆盖整个视口 */
-                background-position: center; /* 图片居中显示 */
-                background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            }
-        .content {
-            padding: 20px;
-            filter: blur(2px); /* 设置模糊效果 */
-            background-color: rgba(179, 201, 198, 0.8); /* 表格背景透明度 */
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
-            font-weight: bold;
-        }
-        input[type="text"], select {
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        td {
-            background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
-        }
-        
-         /* 表格滚动容器 */
-        .table-container {
-            overflow-y: auto; /* 允许垂直滚动 */
-            margin-top: 20px;
-        }
-        /* 统计行样式 */
-        .stats-row {
-            background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
-            font-weight: bold; /* 加粗 */
-            text-align: center; /* 居中 */
-            padding: 10px; /* 内边距 */
-        }
-
-        /* 筛选栏容器 */
-        .filter-container {
-            position: sticky; /* 固定筛选栏 */
-            top: 0; /* 固定在顶部 */
-            background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
-            z-index: 2; /* 确保筛选栏在表格上方 */
-            padding: 10px;
-            border-bottom: 1px solid #ddd; /* 添加底部边框 */
-        }
-
-        /* 表头样式 */
-        .table-header {
-            position: sticky;
-            top: 60px; /* 固定在筛选栏下方 */
-            background-color: rgba(179, 201, 198, 0.8);
-            z-index: 1; /* 确保表头在内容上方 */
-        }
-    </style>
-</head>
-<body>
-修改为筛选栏固定不随表格滚动
-为了实现筛选栏固定不随表格滚动的效果，我们需要将筛选栏（搜索框和下拉菜单）从表格中提取出来，放置在一个单独的容器中，并使用 position: sticky 将其固定在页面顶部。以下是修改后的代码：
-
-修改内容：
-将筛选栏提取到单独的容器中：将 <thead> 中的筛选栏提取到一个新的 <div> 中。
-
-为筛选栏容器添加 position: sticky：使筛选栏固定在顶部。
-
-调整表格的样式：确保表格内容在筛选栏下方正常滚动。
-
-修改后的代码：
-html
-复制
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>冰糖狐狸的歌单</title>
-    <style>
-        /* 定义字体 */
-        @font-face {
-            font-family: 'MyCustomFont'; /* 字体名称 */
-            src: url('MyCustomFont.ttf') format('truetype'), /* 字体文件路径 */
-                  url('MyCustomFont.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-         body {
-            font-family: 'MyCustomFont', sans-serif;
-        }
-
-         body {
-            background-image: url('background.jpg'); /* 背景图片路径 */
-            background-size: cover; /* 图片覆盖整个页面 */
-            background-position: center; /* 图片居中显示 */
-            background-repeat: no-repeat; /* 防止图片重复 */
-            background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            font-family: 'MyCustomFont', sans-serif; /* 使用自定义字体 */
-            color: #596c63; /* 文字颜色 */
-        }
-
-         /* 电脑端样式 */
-        @media (min-width: 769px) {
-            body {
-                background-size: cover; /* 电脑端使用 cover，确保图片覆盖整个页面 */
-            }
-        }
-
-        /* 移动端样式 */
-        @media (max-width: 768px) {
-            body {
-                background-size: cover; /* 背景图覆盖整个视口 */
-                background-position: center; /* 图片居中显示 */
-                background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            }
-        }
-        .content {
-            padding: 20px;
-            filter: blur(2px); /* 设置模糊效果 */
-            background-color: rgba(179, 201, 198, 0.8); /* 表格背景透明度 */
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: rgba(179, 201, 198, 0.8); /* 表头背景透明度 */
-            font-weight: bold;
-        }
-        input[type="text"], select {
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        td {
-            background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
-        }
 
         /* 统计行样式 */
         .stats-row {
@@ -299,31 +78,6 @@ html
             font-weight: bold; /* 加粗 */
             text-align: center; /* 居中 */
             padding: 10px; /* 内边距 */
-        }
-
-        /* 筛选栏容器 */
-        .filter-container {
-            position: sticky; /* 固定筛选栏 */
-            top: 0; /* 固定在顶部 */
-            background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
-            z-index: 2; /* 确保筛选栏在表格上方 */
-            padding: 10px;
-            border-bottom: 1px solid #ddd; /* 添加底部边框 */
-        }
-
-        /* 表头样式 */
-        .table-header {
-            position: sticky;
-            top: 60px; /* 固定在筛选栏下方 */
-            background-color: rgba(179, 201, 198, 0.8);
-            z-index: 1; /* 确保表头在内容上方 */
-        }
-
-        /* 表格滚动容器 */
-        .table-container {
-            max-height: 60vh; /* 设置表格容器的最大高度 */
-            overflow-y: auto; /* 允许垂直滚动 */
-            margin-top: 20px;
         }
     </style>
 </head>
