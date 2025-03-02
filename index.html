@@ -78,6 +78,19 @@ h1 {
                 font-size: 20px; /* 移动端标题字体缩小 */
                 margin: 5px 0; /* 减少上下边距 */
             }
+            .filter-container {
+                height: auto; /* 高度自适应 */
+                padding: 2px; /* 进一步减少内边距 */
+    }
+            /* 调整筛选栏内输入框和下拉菜单的样式 */
+            input[type="text"], select {
+               padding: 3px; /* 减少内边距 */
+               font-size: 12px; /* 缩小字体 */
+    }
+           /* 表头样式调整 */
+       th {
+               padding: 5px; /* 减少表头内边距 */
+    }
         }
         .content {
             padding: 20px;
@@ -162,8 +175,8 @@ h1 {
             top: 0; /* 固定在顶部 */
             background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
             z-index: 2; /* 确保筛选栏在表格上方 */
-            padding: 6px;
-            height: 25px; /* 设置固定高度 */
+            padding: 4px;
+            height: auto; /* 设置固定高度 */
             border-bottom: 1px solid #ddd; /* 添加底部边框 */
             margin-top: 0; /* 移除统计栏和筛选栏之间的间隔 */
         }
