@@ -51,6 +51,10 @@
                 width: 100%; /* 表格宽度占满容器 */
                 border-collapse: collapse; /* 合并表格边框 */
             }
+            h1 {
+                text-align: left; /* 电脑端标题靠左 */
+                padding-left: 20px; /* 添加左边距，避免标题贴边 */
+            }
         }
 
         /* 移动端样式 */
@@ -62,6 +66,9 @@
             }
             .table-container {
                 height: calc(100vh - 120px); /* 动态计算高度 */
+            }
+             h1 {
+                text-align: center; /* 移动端标题居中 */
             }
         }
         .content {
@@ -153,19 +160,11 @@
             margin-top: 0; /* 移除统计栏和筛选栏之间的间隔 */
         }
 
-        /* 标题样式 */
+        /* 标题居中 */
         h1 {
-            text-align: center; /* 默认居中（移动端） */
+            text-align: center; /* 标题居中 */
             margin: 10px 0; /* 调整标题的上下边距 */
-}
-
-        /* 电脑端样式 */
-       @media (min-width: 769px) {
-        h1 {
-           text-align: left; /* 电脑端标题靠左 */
-           padding-left: 20px; /* 添加左边距，避免标题贴边 */
-    }
-}
+        }
 
         /* 图片上传容器 */
         .image-upload-container {
