@@ -19,8 +19,8 @@
         }
         * {
             box-sizing: border-box; /* 确保宽度包含 padding 和 border */
-}
-         body {
+        }
+        body {
             font-family: 'MyCustomFont', sans-serif;
             margin: 0; /* 移除默认的 body 边距 */
             height: 100vh; /* 使 body 占据整个视口高度 */
@@ -28,7 +28,7 @@
             flex-direction: column; /* 垂直布局 */
         }
 
-         body {
+        body {
             background-image: url('background.jpg'); /* 背景图片路径 */
             background-size: cover; /* 图片覆盖整个页面 */
             background-position: center; /* 图片居中显示 */
@@ -38,7 +38,7 @@
             color: #596c63; /* 文字颜色 */
         }
 
-         /* 电脑端样式 */
+        /* 电脑端样式 */
         @media (min-width: 769px) {
             body {
                 background-size: cover; /* 电脑端使用 cover，确保图片覆盖整个页面 */
@@ -50,7 +50,7 @@
             table {
                 width: 100%; /* 表格宽度占满容器 */
                 border-collapse: collapse; /* 合并表格边框 */
-}
+            }
         }
 
         /* 移动端样式 */
@@ -61,7 +61,7 @@
                 background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
             }
             .table-container {
-                height: calc(100vh - 200px); /* 动态计算高度 */
+                height: calc(100vh - 120px); /* 动态计算高度 */
             }
         }
         .content {
@@ -89,15 +89,15 @@
             border-radius: 4px;
         }
         .container {
-    max-width: 100%; /* 让容器占满整个页面宽度 */
-    margin: 0 auto;
-    flex: 1; /* 使容器占据剩余空间 */
-    display: flex;
-    flex-direction: column; /* 垂直布局 */
-    min-height: 100vh; /* 确保容器至少占满整个视口高度 */
-    padding: 0; /* 移除内边距 */
-    margin: 0; /* 移除外边距 */
-}
+            max-width: 100%; /* 让容器占满整个页面宽度 */
+            margin: 0 auto;
+            flex: 1; /* 使容器占据剩余空间 */
+            display: flex;
+            flex-direction: column; /* 垂直布局 */
+            min-height: 100vh; /* 确保容器至少占满整个视口高度 */
+            padding: 0; /* 移除内边距 */
+            margin: 0; /* 移除外边距 */
+        }
         td {
             background-color: rgba(179, 201, 198, 0.6); /* 设置单元格背景透明度 */
         }
@@ -108,8 +108,8 @@
             margin-top: 0; /* 移除与统计栏的间隔 */
             flex-grow: 1; /* 占满剩余空间 */
         }
-        
-         /* 自定义滚动条样式 */
+
+        /* 自定义滚动条样式 */
         .table-container::-webkit-scrollbar {
             width: 8px; /* 滚动条宽度 */
         }
@@ -128,14 +128,17 @@
         .table-container::-webkit-scrollbar-thumb:hover {
             background: rgba(89, 108, 99, 0.8); /* 滚动条滑块悬停颜色 */
         }
-        
+
         /* 统计行样式 */
         .stats-row {
             background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
             font-weight: bold; /* 加粗 */
             text-align: left; /* 靠左 */
-            padding: 6px; /* 内边距 */
+            padding: 5px; /* 减少内边距 */
             margin-bottom: 0; /* 移除统计栏和筛选栏之间的间隔 */
+            height: 30px; /* 设置固定高度 */
+            display: flex;
+            align-items: left; /* 垂直居中 */
         }
 
         /* 筛选栏容器 */
@@ -154,22 +157,24 @@
             text-align: center; /* 标题居中 */
             margin: 10px 0; /* 调整标题的上下边距 */
         }
-        
+
         /* 图片上传容器 */
         .image-upload-container {
             display: flex;
-            justify-content: right;
-            gap: 20px; /* 图标之间的间距 */
-            padding: 8px;
+            justify-content: flex-end; /* 将内容靠右对齐 */
+            gap: 10px; /* 图标之间的间距 */
+            padding: 5px; /* 减少内边距 */
             background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
-            align-items: right; /* 垂直居中 */
+            align-items: center; /* 垂直居中 */
+            height: 40px; /* 设置固定高度 */
         }
 
         /* 图片上传图标样式 */
         .image-upload-icon {
-            width: 30px;
-            height: 30px;
+            width: 25px; /* 缩小图标 */
+            height: 25px; /* 缩小图标 */
             cursor: pointer;
+            border: none; /* 移除虚线框 */
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -182,7 +187,7 @@
         /* 图标后的文字 */
         .image-upload-icon + span {
             margin-left: 5px; /* 文字与图标的间距 */
-            font-size: 16px;
+            font-size: 12px; /* 缩小文字 */
             color: #596c63;
         }
     </style>
