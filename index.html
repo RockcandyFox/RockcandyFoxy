@@ -153,11 +153,19 @@
             margin-top: 0; /* 移除统计栏和筛选栏之间的间隔 */
         }
 
-        /* 标题居中 */
+        /* 标题样式 */
         h1 {
-            text-align: center; /* 标题居中 */
+            text-align: center; /* 默认居中（移动端） */
             margin: 10px 0; /* 调整标题的上下边距 */
-        }
+}
+
+        /* 电脑端样式 */
+       @media (min-width: 769px) {
+        h1 {
+           text-align: left; /* 电脑端标题靠左 */
+           padding-left: 20px; /* 添加左边距，避免标题贴边 */
+    }
+}
 
         /* 图片上传容器 */
         .image-upload-container {
