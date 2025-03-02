@@ -37,6 +37,11 @@
             font-family: 'MyCustomFont', sans-serif; /* 使用自定义字体 */
             color: #596c63; /* 文字颜色 */
         }
+        /* 标题样式 */
+h1 {
+    margin: 10px 0; /* 调整标题的上下边距 */
+    font-size: 24px; /* 默认字体大小 */
+}
 
         /* 电脑端样式 */
         @media (min-width: 769px) {
@@ -54,6 +59,7 @@
             h1 {
                 text-align: left; /* 电脑端标题靠左 */
                 padding-left: 20px; /* 添加左边距，避免标题贴边 */
+                font-size: 28px; /* 电脑端字体稍大 */
             }
         }
 
@@ -69,6 +75,8 @@
             }
              h1 {
                 text-align: center; /* 移动端标题居中 */
+                font-size: 20px; /* 移动端标题字体缩小 */
+                margin: 5px 0; /* 减少上下边距 */
             }
         }
         .content {
@@ -155,7 +163,7 @@
             background-color: rgba(179, 201, 198, 0.8); /* 背景颜色 */
             z-index: 2; /* 确保筛选栏在表格上方 */
             padding: 6px;
-            height: 30px; /* 设置固定高度 */
+            height: 25px; /* 设置固定高度 */
             border-bottom: 1px solid #ddd; /* 添加底部边框 */
             margin-top: 0; /* 移除统计栏和筛选栏之间的间隔 */
         }
