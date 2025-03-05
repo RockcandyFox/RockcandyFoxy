@@ -1236,6 +1236,16 @@ h1 {
             });
             tbody.appendChild(newRow);
         });
+        
+        // 在表格的最后一行添加一个占位元素
+            const placeholderRow = document.createElement('tr');
+            const placeholderCell = document.createElement('td');
+            placeholderCell.setAttribute('colspan', '6'); // 占满所有列
+            placeholderCell.style.height = '50px'; // 设置占位行的高度
+            placeholderCell.style.backgroundColor = 'transparent'; // 设置背景透明
+            placeholderRow.appendChild(placeholderCell);
+            tbody.appendChild(placeholderRow);
+        }
         updateStats(data); // 每次渲染表格后更新统计数据
     }
     
