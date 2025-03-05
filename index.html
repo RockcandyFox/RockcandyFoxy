@@ -1216,6 +1216,14 @@ h1 {
 
     ];
 
+    // 在表格的最后一行添加一个占位元素
+    const placeholderRow = document.createElement('tr');
+    const placeholderCell = document.createElement('td');
+    placeholderCell.setAttribute('colspan', '100%'); // 占满所有列
+    placeholderCell.style.height = '50px'; // 设置占位行的高度
+    placeholderRow.appendChild(placeholderCell);
+    tbody.appendChild(placeholderRow);
+
     // 初始化数据
     function initData() {
         allData = sampleData; // 使用示例数据
@@ -1238,6 +1246,7 @@ h1 {
         });
         updateStats(data); // 每次渲染表格后更新统计数据
     }
+    
 
     // 更新筛选框选项
     function updateFilters(data) {
