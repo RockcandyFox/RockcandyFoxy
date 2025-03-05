@@ -287,10 +287,15 @@ h1 {
         </thead>
         <tbody>
             <!-- 动态生成行 -->
-        </tbody>
-    </table>
-</div>
-
+            <!-- 添加占位元素 -->
+                    <tr>
+                        <td colspan="6" style="height: 50px; background-color: transparent;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
 <script>
     let allData = []; // 存储所有数据
 
@@ -1215,36 +1220,6 @@ h1 {
 ["数字人生",	"林子祥",	"粤语",	"流行",	"1z2 15R",	"节奏"],
 
     ];
-    
-           // 生成表格内容
-        function generateTable() {
-            const tbody = document.querySelector('#readonlyTable tbody');
-            tbody.innerHTML = ''; // 清空现有内容
-
-            // 动态生成表格内容
-            data.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${item.song}</td>
-                    <td>${item.singer}</td>
-                    <td>${item.language}</td>
-                    <td>${item.style}</td>
-                    <td>${item.price}</td>
-                    <td>${item.category}</td>
-                `;
-                tbody.appendChild(row);
-            });
-
-            // 在表格的最后一行添加一个占位元素
-            const placeholderRow = document.createElement('tr');
-            const placeholderCell = document.createElement('td');
-            placeholderCell.setAttribute('colspan', '6'); // 占满所有列
-            placeholderCell.style.height = '50px'; // 设置占位行的高度
-            placeholderCell.style.backgroundColor = 'transparent'; // 设置背景透明
-            placeholderRow.appendChild(placeholderCell);
-            tbody.appendChild(placeholderRow);
-        }
-    
     // 初始化数据
     function initData() {
         allData = sampleData; // 使用示例数据
