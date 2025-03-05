@@ -72,8 +72,9 @@ h1 {
         overflow: hidden; /* 禁止 body 滚动 */
     }
     .table-container {
-        height: calc(100vh - 200px); /* 减去导航栏高度 */
+        height: calc(100vh - 250px - env(safe-area-inset-bottom)); /* 减去导航栏高度 */
         overflow-x: hidden; /* 禁止水平滚动 */
+        overflow-y: auto; /* 允许垂直滚动 */
         width: 100%; /* 宽度占满屏幕 */
     }
     h1 {
