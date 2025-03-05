@@ -62,36 +62,6 @@ h1 {
                 font-size: 28px; /* 电脑端字体稍大 */
             }
         }
-
-        /* 移动端样式 */
-        @media (max-width: 768px) {
-            body {
-                background-size: cover; /* 背景图覆盖整个视口 */
-                background-position: center; /* 图片居中显示 */
-                background-attachment: fixed; /* 背景图片固定，不随页面滚动 */
-            }
-            .table-container {
-                height: calc(100vh - 120px); /* 动态计算高度 */
-            }
-             h1 {
-                text-align: center; /* 移动端标题居中 */
-                font-size: 20px; /* 移动端标题字体缩小 */
-                margin: 5px 0; /* 减少上下边距 */
-            }
-            .filter-container {
-                height: auto; /* 高度自适应 */
-                padding: 2px; /* 进一步减少内边距 */
-    }
-            /* 调整筛选栏内输入框和下拉菜单的样式 */
-            input[type="text"], select {
-               padding: 3px; /* 减少内边距 */
-               font-size: 12px; /* 缩小字体 */
-    }
-           /* 表头样式调整 */
-       th {
-               padding: 5px; /* 减少表头内边距 */
-    }
-        }
         .content {
             padding: 20px;
             filter: blur(2px); /* 设置模糊效果 */
